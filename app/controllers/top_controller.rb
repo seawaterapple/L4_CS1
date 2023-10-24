@@ -1,4 +1,4 @@
-class TopControler < ApplicationController 
+class TopController < ApplicationController 
     def main
         if session[:login_uid] != nil
             render "main"
@@ -8,8 +8,10 @@ class TopControler < ApplicationController
     end
     def login
         if params[:uid] == 'kindai' and params[:pass] == 'sanriko'
-            session[:log_uid] = params[:uid]
+            session[:login_uid] = params[:uid]
             redirect_to top_main_path
+        else
+            render "error"
         end
     end
 end
